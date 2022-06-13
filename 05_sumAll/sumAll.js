@@ -1,24 +1,17 @@
-const sumAll = function(lower, upper) {
+
+const sumAll = function(min, max) {
+    if (!Number.isInteger(min) || !Number.isInteger(max)) return "ERROR";
+    if (min < 0 || max < 0) return "ERROR";
+    if (min > max) {
+      const temp = min;
+      min = max;
+      max = temp;
+    }
     let sum = 0;
-    if (Number.isInteger(lower) && Number.isInteger(upper)) {
-        if (lower < upper) {
-        let array = Array.from({length: upper}, (x, i) => i + lower);
-        for (element in array) {
-            sum += array[element]
-        }
-        } else if (lower > upper) {
-            let array = Array.from({length: lower}, (x, i) => i + upper);
-            for (element in array) {
-                sum += array[element]
+    for (let i = min; i < max + 1; i++) {
+      sum += i;
     }
-    }
-
-    } else {
-        return 'ERROR'
-    }
-
     return sum;
-};
-
-// Do not edit below this line
-module.exports = sumAll;
+  };
+  
+  module.exports = sumAll;
